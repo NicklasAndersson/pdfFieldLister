@@ -6,7 +6,7 @@
 
     <groupId>se.leanon</groupId>
     <artifactId>pdfFieldLister</artifactId>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
     <build>
         <plugins>
             <plugin>
