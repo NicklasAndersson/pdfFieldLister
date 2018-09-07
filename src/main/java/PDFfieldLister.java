@@ -14,6 +14,8 @@ import org.apache.pdfbox.pdmodel.interactive.form.PDNonTerminalField;
 public class PDFfieldLister {
 
     public static void main(String[] args) throws Exception {
+        System.out.println("FullyQualifiedName : FieldType");
+        System.setProperty("sun.java2d.cmm", "sun.java2d.cmm.kcms.KcmsServiceProvider");
         PDFfieldLister pdFfieldLister = new PDFfieldLister();
         pdFfieldLister.parse(args[0]);
     }
@@ -30,7 +32,7 @@ public class PDFfieldLister {
     }
 
     void list(PDField field) throws Exception {
-        System.out.println(field.getFullyQualifiedName());
+        System.out.println(field.getFullyQualifiedName() + " : " + field.getFieldType());
         if (field instanceof PDNonTerminalField) {
             PDNonTerminalField nonTerminalField = (PDNonTerminalField) field;
             for (PDField child : nonTerminalField.getChildren()) {
