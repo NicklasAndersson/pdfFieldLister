@@ -6,7 +6,7 @@
 
     <groupId>se.wwn</groupId>
     <artifactId>pdfFieldLister</artifactId>
-    <version>1.4</version>
+    <version>1.5-SNAPSHOT</version>
     <build>
         <plugins>
             <plugin>
