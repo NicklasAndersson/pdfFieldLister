@@ -1,0 +1,9 @@
+language: java
+deploy:
+  provider: releases
+  api_key:
+    secure: HvZ3mgJ/Qy7TgbWH6VCKsAsogZ7GOJ13xdnrTVw3MX3pH3GmxocymW2TWwM23j2V4bZyPNQd+GVzX6kNpYmUTzkbhK/Hsa8bCN6CBVUoTraIkPTaZQG1r4ps36Jm3I1VMs77u1icDeQTTjS9/ES7OApYR8g+zHxpWifA1kadPIfJz5/9PyUgMSNV9PfJufD4GEzjlm0ECjVqO6nnSBTeHaYPsGEelWyjOpHz6cKu60XFtLrGc/N0n8vbR4QxuB3+sD3bL/a3Cg/8rWLzgP9+4XH1XKT2SU1SSL4hxlCFUfr9G39EKlngK1gMGSz9SZkNNyqUaKyJ4qzxIvwiskoyW9mC9JOIuQdlT1S3x7fvO04USnVHRDvr789m22dDKUc+ZWtJDS74ruJhKDEaxVJnlqNdB1hhxt+RWTr1PUcLIJbJj6HAAzaEy4KyJLqWfADEKJqzIwM9wS/wUmBcBV8FBvU08IbKOCb3e/wrYiJnjlDo3Q0X64wXnx2QqgdzO4j5gNPBBV5Mb9oFw87Ddt7VGDMWhEraij7lLQO4vDM6zu8XyKOUzz6SiwZu0dKFQRYY0fF+aVPgpwu5ZK3qDzu9yBrvNVIpOH9Jq6qYnq1+3NPXkBMrcigrUgReAUcHR4YJ0Pd/TJ2j3YJfFtRJ/CBMjX+trojRfoCmXY4UmQCucLc=
+  file_glob: true
+  file: target/pdfFieldLister*.jar
+  on:
+    repo: NicklasAndersson/pdfFieldLister
