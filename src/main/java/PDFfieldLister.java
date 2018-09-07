@@ -1,5 +1,7 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
+
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
@@ -12,11 +14,15 @@ public class PDFfieldLister {
         System.out.println("FullyQualifiedName : FieldType");
         System.setProperty("sun.java2d.cmm", "sun.java2d.cmm.kcms.KcmsServiceProvider");
         PDFfieldLister pdFfieldLister = new PDFfieldLister();
-        pdFfieldLister.parse(args[0]);
+        try {
+            pdFfieldLister.parse(fileFromString(args[0]));
+        } catch (FileNotFoundException e){
+            System.out.println("File not found " + e.getMessage());
+        }
     }
 
-    private void parse(String uri) throws Exception {
-        PDDocument pdfDocument = PDDocument.load(new File(uri));
+    private void parse(File file) throws Exception {
+        PDDocument pdfDocument = PDDocument.load(file);
         PDDocumentCatalog docCatalog = pdfDocument.getDocumentCatalog();
         PDAcroForm acroForm = docCatalog.getAcroForm();
         List<PDField> fields = acroForm.getFields();
@@ -33,6 +39,15 @@ public class PDFfieldLister {
             for (PDField child : nonTerminalField.getChildren()) {
                 list(child);
             }
+        }
+    }
+
+    private static File fileFromString(String filePathString) throws FileNotFoundException {
+        File f = new File(filePathString);
+        if (f.exists() && !f.isDirectory()) {
+            return f;
+        } else {
+            throw new FileNotFoundException(f.getAbsolutePath());
         }
     }
 }
