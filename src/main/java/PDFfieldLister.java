@@ -6,11 +6,6 @@ import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
 import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 import org.apache.pdfbox.pdmodel.interactive.form.PDNonTerminalField;
 
-/**
- * Created by
- *
- * @author nicklas on 2017-04-12.
- */
 public class PDFfieldLister {
 
     public static void main(String[] args) throws Exception {
@@ -20,7 +15,7 @@ public class PDFfieldLister {
         pdFfieldLister.parse(args[0]);
     }
 
-    public void parse(String uri) throws Exception {
+    private void parse(String uri) throws Exception {
         PDDocument pdfDocument = PDDocument.load(new File(uri));
         PDDocumentCatalog docCatalog = pdfDocument.getDocumentCatalog();
         PDAcroForm acroForm = docCatalog.getAcroForm();
@@ -31,7 +26,7 @@ public class PDFfieldLister {
 
     }
 
-    void list(PDField field) throws Exception {
+    private void list(PDField field) {
         System.out.println(field.getFullyQualifiedName() + " : " + field.getFieldType());
         if (field instanceof PDNonTerminalField) {
             PDNonTerminalField nonTerminalField = (PDNonTerminalField) field;
