@@ -1,3 +1,6 @@
 # pdfFieldLister
+[![Build Status](https://travis-ci.org/NicklasAndersson/pdfFieldLister.svg?branch=master)](https://travis-ci.org/NicklasAndersson/pdfFieldLister)
 
-mvn clean package && java -jar target/pdfFieldLister-1.0-SNAPSHOT.jar "filnamn.pdf"    
+```bash
+java -jar target/pdfFieldLister-1.0.jar "filename.pdf"    
+``` 
