@@ -15,11 +15,10 @@ public class PDFfieldLister {
 
     public static void main(String[] args) throws Exception {
         PDFfieldLister pdFfieldLister = new PDFfieldLister();
-        pdFfieldLister.test(args[0]);
+        pdFfieldLister.parse(args[0]);
     }
 
-    public void test(String uri) throws Exception {
-
+    public void parse(String uri) throws Exception {
         PDDocument pdfDocument = PDDocument.load(new File(uri));
         PDDocumentCatalog docCatalog = pdfDocument.getDocumentCatalog();
         PDAcroForm acroForm = docCatalog.getAcroForm();
@@ -32,7 +31,6 @@ public class PDFfieldLister {
 
     void list(PDField field) throws Exception {
         System.out.println(field.getFullyQualifiedName());
-        System.out.println(field.getPartialName());
         if (field instanceof PDNonTerminalField) {
             PDNonTerminalField nonTerminalField = (PDNonTerminalField) field;
             for (PDField child : nonTerminalField.getChildren()) {
