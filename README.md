@@ -5,6 +5,10 @@
 ```bash
 java -jar target/pdfFieldLister-1.6.jar "filename.pdf"    
 ``` 
+Expected output:
+```
+Field name : FieldType : Value   
+``` 
 
 ### Release
 ```bash
