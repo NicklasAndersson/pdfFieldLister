@@ -3,7 +3,7 @@
 
 ### Run
 ```bash
-java -jar target/pdfFieldLister-1.0.jar "filename.pdf"    
+java -jar target/pdfFieldLister-1.6.jar "filename.pdf"    
 ``` 
 
 ### Release

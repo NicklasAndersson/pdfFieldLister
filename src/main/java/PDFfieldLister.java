@@ -9,6 +9,7 @@ import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 import org.apache.pdfbox.pdmodel.interactive.form.PDNonTerminalField;
 
 public class PDFfieldLister {
+    private static final String SEPARATOR = " : ";
 
     public static void main(String[] args) throws Exception {
         System.out.println("FullyQualifiedName : FieldType");
@@ -16,7 +17,7 @@ public class PDFfieldLister {
         PDFfieldLister pdFfieldLister = new PDFfieldLister();
         try {
             pdFfieldLister.parse(fileFromString(args[0]));
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("File not found " + e.getMessage());
         }
     }
@@ -33,13 +34,25 @@ public class PDFfieldLister {
     }
 
     private void list(PDField field) {
-        System.out.println(field.getFullyQualifiedName() + " : " + field.getFieldType());
+        System.out.println(buildFieldString(field));
         if (field instanceof PDNonTerminalField) {
             PDNonTerminalField nonTerminalField = (PDNonTerminalField) field;
             for (PDField child : nonTerminalField.getChildren()) {
                 list(child);
             }
         }
+    }
+
+    private static String buildFieldString(PDField field) {
+        StringBuilder value = new StringBuilder();
+        value.append(field.getFullyQualifiedName());
+        value.append(SEPARATOR);
+        value.append(field.getFieldType());
+        if (field.getValueAsString() != null && field.getValueAsString().length() != 0) {
+            value.append(SEPARATOR);
+            value.append(field.getValueAsString());
+        }
+        return value.toString();
     }
 
     private static File fileFromString(String filePathString) throws FileNotFoundException {
