@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Vector;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
@@ -30,7 +31,6 @@ public class PDFfieldLister {
         for (PDField field : fields) {
             list(field);
         }
-
     }
 
     private void list(PDField field) {
