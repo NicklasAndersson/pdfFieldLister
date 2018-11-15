@@ -65,7 +65,7 @@
                         <configuration>
                             <headerType>console</headerType>
                             <outfile>target/PdfFieldListner.exe</outfile>
-                            <jar>target/pdfFieldLister-1.10.jar</jar>
+                            <jar>target/pdfFieldLister-${project.version}.jar</jar>
                             <errTitle>encc</errTitle>
                             <classPath>
                                 <mainClass>PDFfieldLister</mainClass>
