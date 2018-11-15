@@ -9,7 +9,8 @@
     <version>1.10-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
     </properties>
     <build>
         <plugins>
@@ -18,8 +19,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -51,6 +52,47 @@
                         <developmentBranch>master</developmentBranch>
                     </gitFlowConfig>
                 </configuration>
+            </plugin>
+
+           <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>l4j-clui</id>
+                        <phase>package</phase>
+                        <goals><goal>launch4j</goal></goals>
+                        <configuration>
+                            <headerType>console</headerType>
+                            <outfile>target/PdfFieldListner.exe</outfile>
+                            <jar>target/pdfFieldLister-1.10-SNAPSHOT.jar</jar>
+                            <errTitle>encc</errTitle>
+                            <classPath>
+                                <mainClass>PDFfieldLister</mainClass>
+                                <addDependencies>false</addDependencies>
+                                <preCp>anything</preCp>
+                            </classPath>
+                            <jre>
+                                <minVersion>${java.version}</minVersion>
+                                <opts>
+                                    <opt>-Djava.endorsed.dirs=./endorsed</opt>
+                                </opts>
+                                <path>JAVA_HOME</path>
+                            </jre>
+                            <versionInfo>
+                                <fileVersion>1.0.0.0</fileVersion>
+                                <txtFileVersion>First</txtFileVersion>
+                                <fileDescription>Lists fields in pdf files</fileDescription>
+                                <copyright>nicklas-andersson.se</copyright>
+                                <productVersion>1.1.0.0</productVersion>
+                                <txtProductVersion>txt product version</txtProductVersion>
+                                <productName>PDFfieldLister</productName>
+                                <internalName>PDFfieldLister</internalName>
+                                <originalFilename>original.exe</originalFilename>
+                            </versionInfo>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
